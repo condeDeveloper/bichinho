@@ -1,0 +1,83 @@
+/* As animações da carcaça — as do bichinho são todas em canvas.
+ *
+ * São poucas e curtas de propósito. Uma interface que se mexe o tempo todo
+ * cansa, e o brinquedo já tem uma coisa se mexendo no meio da tela. */
+
+/* A barra crítica pisca. O período é longo — quase um segundo e meio — porque
+ * um piscar rápido lê como erro de sistema, e este é um pedido de comida. */
+@keyframes pulsar {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+.barra.critica .barra-cheio {
+  animation: pulsar 1.4s ease-in-out infinite;
+}
+
+.barra.critica .barra-nome {
+  color: #c2410c;
+  font-weight: 700;
+}
+
+/* O anel do botão sugerido respira. Ele usa `box-shadow` em vez de `outline`
+ * porque só o primeiro aceita mais de uma camada — e o botão já tem duas. */
+@keyframes respirar {
+  0%, 100% {
+    box-shadow:
+      0 3px 0 rgb(0 0 0 / 0.12),
+      inset 0 1px 0 rgb(255 255 255 / 0.9),
+      0 0 0 2px #ffb454;
+  }
+  50% {
+    box-shadow:
+      0 3px 0 rgb(0 0 0 / 0.12),
+      inset 0 1px 0 rgb(255 255 255 / 0.9),
+      0 0 0 5px rgb(255 180 84 / 0.35);
+  }
+}
+
+.botao.sugerido:not(:disabled) {
+  animation: respirar 2s ease-in-out infinite;
+}
+
+/* O relatório entra subindo. */
+@keyframes subir {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.relatorio.aberto {
+  animation: subir 0.28s ease-out;
+}
+
+/* O foco visível. Ele é desenhado à mão porque o padrão do navegador some
+ * dentro da moldura escura — e tirar o foco sem pôr outro é o jeito mais
+ * rápido de deixar o brinquedo inutilizável para quem navega por teclado. */
+:focus-visible {
+  outline: 3px solid #ff9ec0;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* O aparelho inteiro dá um pulinho quando a página abre. Dura um quarto de
+ * segundo e acontece uma vez. */
+@keyframes chegar {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.aparelho {
+  animation: chegar 0.35s ease-out;
+}

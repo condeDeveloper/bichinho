@@ -1,0 +1,65 @@
+/* O mínimo para partir do mesmo lugar em todo navegador.
+ *
+ * Não é um reset daqueles que zeram tudo: aqueles apagam o estilo de coisas
+ * que já vinham certas e obrigam a reescrevê-las. Aqui são só as quatro ou
+ * cinco diferenças que realmente atrapalham. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* A margem do corpo e a dos títulos, que quase ninguém quer como vêm. */
+body,
+h1,
+h2,
+p,
+ul,
+figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+/* Botão não herda fonte por padrão, e isso é uma esquisitice de 1995 que
+ * sobreviveu em todos os navegadores. */
+button,
+input,
+kbd {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* Imagem e canvas como bloco: o espaço fantasma embaixo deles vem de serem
+ * `inline` e alinharem pela linha de base do texto. */
+img,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Quem pediu para o sistema reduzir animação está pedindo por um motivo. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

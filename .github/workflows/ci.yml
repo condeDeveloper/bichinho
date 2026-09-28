@@ -1,0 +1,21 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  conferir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Nomes no escopo global
+        run: node ferramentas/conferir-colisoes.mjs
+
+      - name: O balanco do jogo
+        run: node ferramentas/balanco.mjs

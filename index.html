@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Um bichinho virtual em JavaScript puro. Sem imagem, sem som gravado e sem dependência: tudo desenhado em canvas e sintetizado na hora.">
+<meta name="theme-color" content="#f7c8d8">
+<title>Bichinho</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🥚</text></svg>">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/aparelho.css">
+<link rel="stylesheet" href="css/painel.css">
+<link rel="stylesheet" href="css/animacoes.css">
+</head>
+<body>
+
+<main class="aparelho">
+  <header class="aparelho-topo">
+    <h1>bichinho</h1>
+    <div class="aparelho-controles">
+      <button type="button" id="somBotao" class="mini" aria-label="desligar o som">🔊</button>
+      <button type="button" id="recomecar" class="mini" aria-label="recomeçar com outro bichinho">↺</button>
+    </div>
+  </header>
+
+  <div class="moldura">
+    <canvas id="tela" width="320" height="240" aria-label="o bichinho"></canvas>
+
+    <div id="relatorio" class="relatorio" role="status" aria-live="polite"></div>
+  </div>
+
+  <section class="ficha" id="ficha" aria-label="quem é ele"></section>
+
+  <section class="barras" id="barras" aria-label="como ele está"></section>
+
+  <nav class="botoes" id="botoes" aria-label="o que fazer"></nav>
+
+  <section class="placar" id="placar" aria-label="o que vocês já fizeram"></section>
+
+  <p class="atalhos" id="atalhos"></p>
+</main>
+
+<footer class="rodape">
+  <p>
+    Sem imagem, sem som gravado e sem dependência — tudo é desenhado em canvas
+    e sintetizado na hora.
+    <a href="https://github.com/condeDeveloper/bichinho">código</a>
+  </p>
+</footer>
+
+<script src="js/aleatorio.js"></script>
+<script src="js/relogio.js"></script>
+<script src="js/necessidades.js"></script>
+<script src="js/humor.js"></script>
+<script src="js/saude.js"></script>
+<script src="js/idade.js"></script>
+<script src="js/personalidade.js"></script>
+<script src="js/bichinho.js"></script>
+<script src="js/acoes.js"></script>
+<script src="js/persistencia.js"></script>
+<script src="js/relatorio.js"></script>
+<script src="js/paleta.js"></script>
+<script src="js/desenho/cenario.js"></script>
+<script src="js/desenho/corpo.js"></script>
+<script src="js/desenho/rosto.js"></script>
+<script src="js/desenho/particulas.js"></script>
+<script src="js/desenho/tela.js"></script>
+<script src="js/som/oscilador.js"></script>
+<script src="js/som/musicas.js"></script>
+<script src="js/painel.js"></script>
+<script src="js/botoes.js"></script>
+<script src="js/teclado.js"></script>
+<script src="js/jogo.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+/* A ficha, as barrinhas, os botões e o placar. */
+
+.ficha {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0 0.3rem;
+}
+
+.ficha-nome {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #6b4353;
+}
+
+.ficha-detalhe {
+  font-size: 0.75rem;
+  color: #8a6a78;
+}
+
+.ficha-saude {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* As barras. Duas colunas: o nome, e o trilho ocupando o resto. */
+.barras {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.65rem 0.7rem;
+  border-radius: 16px;
+  background: rgb(255 255 255 / 0.45);
+}
+
+.barra {
+  display: grid;
+  grid-template-columns: 4.6rem 1fr;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.barra-nome {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #6b4353;
+}
+
+.barra-trilho {
+  height: 9px;
+  border-radius: 999px;
+  background: rgb(0 0 0 / 0.1);
+  overflow: hidden;
+}
+
+.barra-cheio {
+  height: 100%;
+  width: 100%;
+  border-radius: 999px;
+
+  /* A largura anima, a cor também. Sem a transição, a barra dá saltos a cada
+   * minuto em vez de escorrer. */
+  transition: width 0.45s ease-out, background 0.45s;
+}
+
+/* Os botões. Uma grade que se ajusta sozinha ao número de ações — acrescentar
+ * uma sexta não pede mexer aqui. */
+.botoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(62px, 1fr));
+  gap: 0.45rem;
+}
+
+.botao {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.15rem;
+  padding: 0.55rem 0.3rem 0.45rem;
+
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fffdfa, #f0e6ea);
+  box-shadow:
+    0 3px 0 rgb(0 0 0 / 0.12),
+    inset 0 1px 0 rgb(255 255 255 / 0.9);
+
+  transition: transform 0.08s, box-shadow 0.08s, background 0.2s;
+}
+
+.botao:hover:not(:disabled) {
+  background: linear-gradient(180deg, #ffffff, #f7eef2);
+}
+
+.botao:active:not(:disabled),
+.botao.apertado {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 rgb(0 0 0 / 0.12), inset 0 1px 0 rgb(255 255 255 / 0.9);
+}
+
+.botao:disabled {
+  opacity: 0.4;
+  box-shadow: none;
+}
+
+.botao-icone {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.botao-nome {
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: #6b4353;
+}
+
+.botao kbd {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: #b9a3ad;
+}
+
+/* O botão que resolve a urgência do momento ganha um anel. É uma dica, e não
+ * um comando: o resto continua funcionando. */
+.botao.sugerido:not(:disabled) {
+  box-shadow:
+    0 3px 0 rgb(0 0 0 / 0.12),
+    inset 0 1px 0 rgb(255 255 255 / 0.9),
+    0 0 0 2px #ffb454;
+}
+
+.placar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.3rem;
+  padding: 0.5rem 0.2rem 0;
+}
+
+.placar-item {
+  display: grid;
+  justify-items: center;
+  gap: 0.1rem;
+  font-size: 0.6rem;
+  color: #8a6a78;
+}
+
+.placar-item b {
+  font-size: 0.95rem;
+  color: #6b4353;
+}
+
+.atalhos {
+  text-align: center;
+  font-size: 0.6rem;
+  letter-spacing: 0.02em;
+  color: #a98c98;
+}
+
+/* Telas estreitas: o placar em duas linhas em vez de quatro colunas
+ * espremidas. */
+@media (max-width: 360px) {
+  .placar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .barra {
+    grid-template-columns: 4rem 1fr;
+  }
+}
